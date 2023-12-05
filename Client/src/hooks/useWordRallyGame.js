@@ -12,7 +12,7 @@ const useWordRallyGame = () => {
     gameOver: false,
     winner: null,
     errorMessage: "",
-    playerTimer: [20, 20],
+    playerTimer: [60, 60],
     turnTimer: [10, 10],
     playerNumber: location.state?.playerNumber,
     gameId: location.state?.gameId,

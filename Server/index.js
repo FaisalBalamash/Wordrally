@@ -35,7 +35,7 @@ io.on("connection", (socket) => {
         if (waitingPlayers.length === 2) {
             const [player1, player2] = waitingPlayers;
             const gameId = player1.id + player2.id;
-            games[gameId] = new Game(player1, player2, gameId);
+            games[gameId] = new Game(player1, player2, gameId, io);
             socketToGameMap[player1.id] = gameId;
             socketToGameMap[player2.id] = gameId;
             player1.emit("gameStart", { gameId, playerNumber: 1 });
@@ -106,7 +106,7 @@ class Game {
         this.gameId = gameId;
         this.currentTurn = 0;
         this.usedWords = new Set();
-        this.timers = [20, 20]; // change it to 100 when finally debugging
+        this.timers = [60, 60];
         this.turnTimers = [10, 10];
         this.timeoutIds = [null, null];
         this.turnTimeoutIds = [null, null];
